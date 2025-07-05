@@ -10,7 +10,7 @@
     body {
       margin: 0;
       font-family: 'Comic Neue', cursive;
-      background: linear-gradient(135deg, #ffe6f0, #fff0f5);
+      background-color: #ffd6e7;
       overflow-x: hidden;
     }
     .page {
@@ -64,6 +64,10 @@
       width: 100%;
       border-radius: 20px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .photo-grid img:hover {
+      transform: scale(1.05);
     }
     #fireworks {
       font-size: 2rem;
@@ -79,6 +83,16 @@
       font-size: 2rem;
       animation: heartbeat 1s infinite;
       margin-top: 10px;
+    }
+    .postcard-toggle {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .postcard-toggle img {
+      max-width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     @keyframes fadeIn {
       from {opacity: 0; transform: translateY(20px);}
@@ -128,8 +142,11 @@
 
   <div class="page surprise hidden">
     <h2>🎁 Surprise!</h2>
-    <p>This is a placeholder for your handwritten postcard 💌</p>
-    <img src="postcard-placeholder.png" alt="Postcard placeholder" width="300">
+    <p>Here’s a little handwritten something... both sides! 💌</p>
+    <div class="postcard-toggle">
+      <img src="postcard-front.png" alt="Postcard Front">
+      <img src="postcard-back.png" alt="Postcard Back">
+    </div>
     <button onclick="navigateTo('cake')">Next →</button>
   </div>
 
@@ -150,9 +167,8 @@
 
   <div class="page nerdy hidden">
     <h2>The Nerdy Page</h2>
-    <p>This site was coded with HTML, lots of glitter, 3 coffee refills and at least 7 mini emotional breakdowns. All worth it.</p>
+    <p>This site was coded with HTML/CSS/JS, lots of glitter, 3 coffee refills and at least 7 mini emotional breakdowns. All worth it.</p>
     <p>Made specially for Sattu, the calmest chaos in my life 💖</p>
-    <p>Hope you enjoyed it</p>
   </div>
 
   <script>
