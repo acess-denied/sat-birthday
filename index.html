@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Sattu</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Happy Birthday Sattu! 🎀</title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Comic+Neue&display=swap" rel="stylesheet">
   <style>
     body {
@@ -12,6 +10,7 @@
       font-family: 'Comic Neue', cursive;
       background-color: #ffd6e7;
       overflow-x: hidden;
+      position: relative;
     }
     .page {
       min-height: 100vh;
@@ -21,7 +20,8 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      animation: fadeIn 1s ease-in;
+      animation: pageIn 0.8s ease-in-out;
+      transition: transform 0.5s ease, opacity 0.5s ease;
     }
     .hidden {
       display: none;
@@ -29,78 +29,91 @@
     h1, h2 {
       font-family: 'Pacifico', cursive;
       color: #ff66b3;
-      font-size: 2.5em;
-      text-shadow: 1px 1px 2px #ff99cc;
+      font-size: 2.8em;
+      text-shadow: 2px 2px 5px #ff99cc;
+      animation: sparkleText 2s infinite alternate;
     }
     p {
       font-size: 1.2em;
       color: #660033;
       max-width: 90vw;
-    }
-    button {
-      margin-top: 20px;
-      padding: 12px 24px;
-      background-color: #ff66b3;
-      color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 1em;
-      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
-      transition: transform 0.2s ease-in-out;
-    }
-    button:hover {
-      background-color: #ff3385;
-      transform: scale(1.05);
+      animation: fadeInText 1s ease-in;
     }
     .photo-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       gap: 15px;
       margin-top: 20px;
+      animation: bounceIn 1s ease;
     }
     .photo-grid img {
       width: 100%;
       border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.4s ease;
     }
     .photo-grid img:hover {
-      transform: scale(1.05);
+      transform: rotate(2deg) scale(1.08);
     }
-    #fireworks {
-      font-size: 2rem;
-      margin: 20px 0;
-      animation: pop 1s infinite;
-    }
-    .signature {
-      font-style: italic;
-      color: #444;
-      margin-top: 20px;
+    #fireworks img {
+      max-width: 300px;
+      border-radius: 20px;
+      animation: boom 0.8s ease-in-out infinite alternate;
     }
     .animated-heart {
       font-size: 2rem;
       animation: heartbeat 1s infinite;
       margin-top: 10px;
     }
-    .postcard-toggle {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
+    .overlay-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 99;
+      pointer-events: auto;
     }
-    .postcard-toggle img {
-      max-width: 300px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    .overlay-left, .overlay-right {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 20%;
+      z-index: 9999;
     }
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
+    .overlay-left { left: 0; }
+    .overlay-right { right: 0; }
+    img.emoji {
+      width: 50px;
+      height: 50px;
+      margin: 10px;
+      animation: emojiWiggle 1.2s infinite;
     }
-    @keyframes pop {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
+    .hours-spent {
+      margin-top: 40px;
+      font-size: 0.9em;
+      font-style: italic;
+      color: #444;
+    }
+    @keyframes pageIn {
+      from { opacity: 0; transform: scale(0.92) rotate(-2deg); }
+      to { opacity: 1; transform: scale(1) rotate(0); }
+    }
+    @keyframes sparkleText {
+      0% { text-shadow: 0 0 10px #ffb3d9; }
+      100% { text-shadow: 0 0 20px #ff66b3, 0 0 30px #ffb3d9; }
+    }
+    @keyframes fadeInText {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes boom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
     @keyframes heartbeat {
       0%, 100% { transform: scale(1); }
@@ -108,86 +121,94 @@
       50% { transform: scale(0.95); }
       75% { transform: scale(1.1); }
     }
+    @keyframes emojiWiggle {
+      0%, 100% { transform: rotate(-10deg); }
+      50% { transform: rotate(10deg); }
+    }
   </style>
 </head>
 <body>
-  <audio id="bg-music" src="pretty-little-baby.mp3" preload="auto"></audio>
-
-  <div class="page home">
-    <h1>Happy Birthday, Sattu 🎉</h1>
-    <p>7th July 2007 – the world got a limited edition drop ✨<br>This ain't just a birthday, it's a national pyaar day 💖</p>
-    <button onclick="startExperience()">🎈 Start the Journey</button>
+<audio id="bg-music" src="https://cdn.pixabay.com/audio/2023/03/28/audio_ef22516f4e.mp3" preload="auto"></audio>
+<div class="overlay-nav">
+  <div class="overlay-left" onclick="goBack()"></div>
+  <div class="overlay-right" onclick="goForward()"></div>
+</div>
+<div class="page home">
+  <h1>Happy Birthday, Sattu 🎉</h1>
+  <p>7th July 2007 – the world got a limited edition drop ✨<br>This ain't just a birthday, it's a national pyaar day 💖</p>
+  <img src="https://media.giphy.com/media/l0MYEWpv7Ue0RFVaE/giphy.gif" class="emoji" alt="flower">
+</div>
+<div class="page about hidden">
+  <h2>About You 😇</h2>
+  <p>Calm. Composed. Beautiful. Emotionally stable. Sattu is a whole vibe 🌸</p>
+  <p>You’re that person who doesn’t need to be loud to be heard. Who can silence chaos with just one look. Grace like yours doesn’t walk in every day. 🌟</p>
+  <img src="https://media.giphy.com/media/3o7qDWo3lqfLdpYq3i/giphy.gif" alt="sparkle" class="emoji">
+</div>
+<div class="page gallery hidden">
+  <h2>Gallery 📸</h2>
+  <p>These photos? They’re proof that you can light up a frame without even trying. 💕</p>
+  <div class="photo-grid">
+    <img src="photo1.jpg" alt="Sattu 1">
+    <img src="photo2.jpg" alt="Sattu 2">
+    <img src="photo3.jpg" alt="Sattu 3">
+    <img src="photo4.jpg" alt="Sattu 4">
+    <img src="photo5.jpg" alt="Sattu 5">
+    <img src="photo6.jpg" alt="Sattu 6">
   </div>
-
-  <div class="page about hidden">
-    <h2>About You</h2>
-    <p>Calm. Composed. Beautiful. Emotionally stable. Sattu is a whole vibe.</p>
-    <p>You’re that person who doesn’t need to be loud to be heard. Who can silence chaos with just one look. Grace like yours doesn’t walk in every day.</p>
-    <button onclick="navigateTo('gallery')">Next →</button>
+</div>
+<div class="page surprise hidden">
+  <h2>🎁 Surprise!</h2>
+  <p>Here's your handwritten postcard! 💌</p>
+  <img src="postcard-front.jpg" alt="Postcard front" width="300">
+  <img src="postcard-back.jpg" alt="Postcard back" width="300">
+</div>
+<div class="page cake hidden">
+  <h2>Make a Wish 🎂</h2>
+  <p>Okay ab wish maang le 😘</p>
+  <button onclick="blowCandle()">Blow the Candle 🎂</button>
+  <div id="fireworks" class="hidden">
+    <img src="https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif" alt="Fireworks Celebration">
   </div>
-
-  <div class="page gallery hidden">
-    <h2>Gallery</h2>
-    <p>These photos? They’re proof that you can light up a frame without even trying.</p>
-    <div class="photo-grid">
-      <img src="photo1.jpg" alt="Sattu 1">
-      <img src="photo2.jpg" alt="Sattu 2">
-      <img src="photo3.jpg" alt="Sattu 3">
-      <img src="photo4.jpg" alt="Sattu 4">
-      <img src="photo5.jpg" alt="Sattu 5">
-      <img src="photo6.jpg" alt="Sattu 6">
-    </div>
-    <button onclick="navigateTo('surprise')">Next →</button>
-  </div>
-
-  <div class="page surprise hidden">
-    <h2>🎁 Surprise!</h2>
-    <p>Here’s a little handwritten something... both sides! 💌</p>
-    <div class="postcard-toggle">
-      <img src="postcard-front.jpg" alt="Postcard Front">
-      <img src="postcard-back.jpg" alt="Postcard Back">
-    </div>
-    <button onclick="navigateTo('cake')">Next →</button>
-  </div>
-
-  <div class="page cake hidden">
-    <h2>Make a Wish 🎂</h2>
-    <button onclick="blowCandle()">Blow the Candle</button>
-    <div id="fireworks" class="hidden">🎆🎆🎆</div>
-    <button onclick="navigateTo('final')">Next →</button>
-  </div>
-
-  <div class="page final hidden">
-    <h2>A Little Message</h2>
-    <p>Sattu, the world feels a little brighter when you smile. You’ve got this way of turning normal days into something golden — without even knowing it.</p>
-    <p>Maybe it’s your calm, maybe your charm, or maybe just the kind of person you are — thoughtful, warm, and rare in the best ways possible.</p>
-    <div class="animated-heart">💗</div>
-    <button onclick="navigateTo('nerdy')">Last one →</button>
-  </div>
-
-  <div class="page nerdy hidden">
-    <h2>The Nerdy Page</h2>
-    <p>This site was coded with HTML/CSS/JS, lots of glitter, 3 coffee refills and at least 7 mini emotional breakdowns. All worth it.</p>
-    <p>Made specially for Sattu, the calmest chaos in my life 💖</p>
-    <p>Hope you enjoyed it</p>
-  </div>
-
-  <script>
-    function navigateTo(page) {
-      document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
-      document.querySelector(`.page.${page}`).classList.remove('hidden');
-    }
-
-    function blowCandle() {
-      document.getElementById('fireworks').classList.remove('hidden');
-    }
-
-    function startExperience() {
-      const music = document.getElementById('bg-music');
-      music.volume = 0.4;
-      music.play().catch(e => console.log("Playback issue:", e));
-      navigateTo('about');
-    }
-  </script>
+</div>
+<div class="page final hidden">
+  <h2>A Little Message 💖</h2>
+  <p>Sattu, the world feels a little brighter when you smile. You’ve got this way of turning normal days into something golden — without even knowing it. 💖</p>
+  <p>Maybe it’s your calm, maybe your charm, or maybe just the kind of person you are — thoughtful, warm, and rare in the best ways possible. 🌷</p>
+  <div class="animated-heart">💗</div>
+  <img src="https://media.giphy.com/media/xUPGcjGy8I928yIlAQ/giphy.gif" alt="Hearts Floating">
+</div>
+<div class="page nerdy hidden">
+  <h2>The Nerdy Page 🤓</h2>
+  <p>This site was coded with HTML/CSS/JS, lots of glitter, 3 coffee refills and at least 7 mini emotional breakdowns. All worth it ✨</p>
+  <p>Made specially for Sattu, the calmest chaos in my life 💖</p>
+  <div class="hours-spent">⌛ Time spent: approx. 6 hours, 41 minutes and 33 seconds (till final deployment)</div>
+  <img src="https://media.giphy.com/media/l0Exk8EUzSLsrErEQ/giphy.gif" class="emoji" alt="coding love">
+</div>
+<script>
+const pages = ["home", "about", "gallery", "surprise", "cake", "final", "nerdy"];
+let currentPage = 0;
+function navigateTo(pageName) {
+  document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+  document.querySelector(`.page.${pageName}`).classList.remove('hidden');
+  currentPage = pages.indexOf(pageName);
+}
+function goBack() {
+  if (currentPage > 0) navigateTo(pages[currentPage - 1]);
+}
+function goForward() {
+  if (currentPage < pages.length - 1) navigateTo(pages[currentPage + 1]);
+}
+function blowCandle() {
+  const fireworks = document.getElementById('fireworks');
+  fireworks.classList.remove('hidden');
+}
+function startExperience() {
+  const music = document.getElementById('bg-music');
+  music.volume = 0.4;
+  music.play().catch(e => console.log("Playback issue:", e));
+  navigateTo('about');
+}
+document.addEventListener("DOMContentLoaded", () => navigateTo("home"));
+</script>
 </body>
-</html>
+    </html>
