@@ -55,10 +55,10 @@
     .photo-grid img:hover {
       transform: rotate(2deg) scale(1.08);
     }
-    #fireworks img {
+    #celebration-gif {
+      margin-top: 20px;
       max-width: 300px;
-      border-radius: 20px;
-      animation: boom 0.8s ease-in-out infinite alternate;
+      display: none;
     }
     .animated-heart {
       font-size: 2rem;
@@ -89,6 +89,23 @@
       margin: 10px;
       animation: emojiWiggle 1.2s infinite;
     }
+    button.cut-button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #ff66b3;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1.2em;
+      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+      transition: transform 0.2s ease-in-out;
+    }
+    button.cut-button:hover {
+      background-color: #ff3385;
+      transform: scale(1.05);
+    }
     .hours-spent {
       margin-top: 40px;
       font-size: 0.9em;
@@ -106,10 +123,6 @@
     @keyframes fadeInText {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes boom {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.05); }
     }
     @keyframes bounceIn {
       0% { transform: scale(0.7); opacity: 0; }
@@ -142,7 +155,7 @@
   <h2>About You 😇</h2>
   <p>Calm. Composed. Beautiful. Emotionally stable. Sattu is a whole vibe 🌸</p>
   <p>You’re that person who doesn’t need to be loud to be heard. Who can silence chaos with just one look. Grace like yours doesn’t walk in every day. 🌟</p>
-  <img src="https://media.giphy.com/media/3o7qDWo3lqfLdpYq3i/giphy.gif" alt="sparkle" class="emoji">
+  <img src="https://media.giphy.com/media/J7E5B9b9pA9nC/giphy.gif" alt="sparkle" class="emoji">
 </div>
 <div class="page gallery hidden">
   <h2>Gallery 📸</h2>
@@ -165,10 +178,9 @@
 <div class="page cake hidden">
   <h2>Make a Wish 🎂</h2>
   <p>Okay ab wish maang le 😘</p>
-  <button onclick="blowCandle()">Blow the Candle 🎂</button>
-  <div id="fireworks" class="hidden">
-    <img src="https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif" alt="Fireworks Celebration">
-  </div>
+  <img src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif" alt="Cake GIF" width="250">
+  <button class="cut-button" onclick="cutCake()">Cut 🎂</button>
+  <img id="celebration-gif" src="https://media.giphy.com/media/l3q2K5jinAlChoCLS/giphy.gif" alt="Celebration Sparkles">
 </div>
 <div class="page final hidden">
   <h2>A Little Message 💖</h2>
@@ -198,9 +210,8 @@ function goBack() {
 function goForward() {
   if (currentPage < pages.length - 1) navigateTo(pages[currentPage + 1]);
 }
-function blowCandle() {
-  const fireworks = document.getElementById('fireworks');
-  fireworks.classList.remove('hidden');
+function cutCake() {
+  document.getElementById('celebration-gif').style.display = 'block';
 }
 function startExperience() {
   const music = document.getElementById('bg-music');
@@ -211,4 +222,4 @@ function startExperience() {
 document.addEventListener("DOMContentLoaded", () => navigateTo("home"));
 </script>
 </body>
-    </html>
+</html>
