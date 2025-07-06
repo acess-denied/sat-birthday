@@ -137,8 +137,8 @@ function blowCandles() {
   const candles = document.querySelectorAll('.candle-emoji');
   const puff = document.getElementById('puff');
   puff.style.display = 'block';
-  candles.forEach(c => c.textContent = '🕯');
   setTimeout(() => {
+    candles.forEach(c => c.textContent = '🕯');
     puff.style.display = 'none';
   }, 1500);
 }
